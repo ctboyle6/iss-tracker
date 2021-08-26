@@ -1,10 +1,15 @@
 import React from 'react';
 import './App.css';
-// import getISS from './getISS.js';
+import getISS from './getISS.js';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 function App() {
-  // setInterval(getISS, 10000);
+  const getCoords = async () => {
+    const response = await getISS();
+    console.log(response);
+  }
+
+  getCoords();
 
   return (
     <div className="App">

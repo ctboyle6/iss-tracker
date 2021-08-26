@@ -7,6 +7,9 @@ function App() {
     const satelliteFetch = await fetch(url);
     const satelliteData = await satelliteFetch.json();
     console.log(satelliteData)
+
+    document.getElementById('latitude').textContent = satelliteData.latitude;
+    document.getElementById('longitude').textContent = satelliteData.longitude;
   }
 
   getISS();

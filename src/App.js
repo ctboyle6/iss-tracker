@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const getISS = async () => {
+    const url = 'https://api.wheretheiss.at/v1/satellites/25544'
+
+    const satelliteFetch = await fetch(url);
+    const satelliteData = await satelliteFetch.json();
+    console.log(satelliteData)
+  }
+
+  getISS();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>ISS Tracker</h1>
+      <div>
+        <h3>Latitude: <span id="latitude"></span></h3>
+        <h3>Longitude: <span id="longitude"></span></h3>
+      </div>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import './App.css';
 import getISS from './getISS.js';
 
 function App() {
-  getISS();
+  setInterval(getISS, 3000);
 
   return (
     <div className="App">

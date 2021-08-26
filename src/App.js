@@ -1,5 +1,6 @@
 import './App.css';
 import getISS from './getISS.js';
+import "leaflet";
 
 function App() {
   setInterval(getISS, 3000);

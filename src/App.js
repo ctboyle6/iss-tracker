@@ -22,12 +22,12 @@ function App() {
     setCoords(satelliteData);
   }
 
-  console.log(coords)
+  // console.log(coords)
 
   const showMap = () => {
     if (coords.latitude) {
       return (
-        <MapContainer center={[coords.latitude, coords.longitude]} zoom={2} scrollWheelZoom={false}>
+        <MapContainer center={[coords.latitude, coords.longitude]} zoom={2} scrollWheelZoom={true}>
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

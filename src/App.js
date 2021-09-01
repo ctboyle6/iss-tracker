@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-// import getISS from './getISS.js';
+import getISS from './getISS.js';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 function App() {
   const [coords, setCoords] = useState({});
   
   useEffect(() => {
-    const getISS = async () => {
-      const url = 'https://api.wheretheiss.at/v1/satellites/25544'
-  
-      const response = await fetch(url);
-      const satelliteData = await response.json();
-  
-      // document.getElementById('latitude').textContent = satelliteData.latitude;
-      // document.getElementById('longitude').textContent = satelliteData.longitude;
-
+    const fetchISS = async () => {
+      const satelliteData = await getISS();
+      
       setCoords(satelliteData);
     };
     
-    getISS();
+    fetchISS();
   }, [])
+
+  const refreshISS = async () => {
+    const satelliteData = await getISS();
+      
+    setCoords(satelliteData);
+  }
 
   console.log(coords)
 
@@ -52,6 +52,11 @@ function App() {
       <div>
         {showMap()}
       </div>
+      <button onClick={() => {
+        refreshISS();
+      }}>
+        Where's it at now??
+      </button>
     </div>
   );
 }

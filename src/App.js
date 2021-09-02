@@ -6,23 +6,15 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 function App() {
   const [coords, setCoords] = useState({});
   
-  useEffect(() => {
-    const fetchISS = async () => {
-      const satelliteData = await getISS();
-      
-      setCoords(satelliteData);
-    };
-    
-    fetchISS();
-  }, [])
-
-  const refreshISS = async () => {
+  const fetchISS = async () => {
     const satelliteData = await getISS();
       
     setCoords(satelliteData);
   }
 
-  // console.log(coords)
+  useEffect(() => {
+    fetchISS();
+  }, [])
 
   const showMap = () => {
     if (coords.latitude) {
@@ -53,7 +45,7 @@ function App() {
         {showMap()}
       </div>
       <button onClick={() => {
-        refreshISS();
+        fetchISS();
       }}>
         Where's it at now??
       </button>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import getISS from './getISS.js';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [coords, setCoords] = useState({});
@@ -14,7 +15,7 @@ function App() {
 
   useEffect(() => {
     fetchISS();
-  }, [])
+  }, [coords.latitude])
 
   const showMap = () => {
     if (coords.latitude) {
@@ -35,7 +36,13 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+      }}
+    >
       <h1>ISS Tracker</h1>
       <div>
         <h3>Latitude: <span id="latitude"></span>{coords.latitude}</h3>
@@ -44,9 +51,12 @@ function App() {
       <div>
         {showMap()}
       </div>
-      <button onClick={() => {
-        fetchISS();
-      }}>
+      <button 
+        onClick={() => {
+          fetchISS();
+        }}
+        className="btn btn-primary my-4 p-3" 
+      >
         Where's it at now??
       </button>
     </div>

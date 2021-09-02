@@ -45,8 +45,8 @@ function App() {
     >
       <h1>ISS Tracker</h1>
       <div>
-        <h3>Latitude: <span id="latitude"></span>{coords.latitude}</h3>
-        <h3>Longitude: <span id="longitude"></span>{coords.longitude}</h3>
+        <h3>Latitude: <span id="latitude"></span>{Number(coords.latitude).toFixed(4)}&deg;</h3>
+        <h3>Longitude: <span id="longitude"></span>{Number(coords.longitude).toFixed(4)}&deg;</h3>
       </div>
       <div>
         {showMap()}

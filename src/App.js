@@ -55,7 +55,7 @@ function App() {
         onClick={() => {
           fetchISS();
         }}
-        className="btn btn-primary my-4 p-3" 
+        className="btn btn-primary my-4 p-3 fw-bold" 
       >
         Where's it at now??
       </button>

@@ -17,6 +17,10 @@ function App() {
     fetchISS();
   }, [coords.latitude])
 
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   const showMap = () => {
     if (coords.latitude) {
       return (
@@ -27,7 +31,7 @@ function App() {
           />
           <Marker position={[coords.latitude, coords.longitude]}>
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              Her: Come over <br /> Me: I can't. I'm flying over Asia right now. <br /> Her: My parents aren't home. <br /> ISS Velocity: {numberWithCommas(Number(coords.velocity).toFixed(2))} km/hr
             </Popup>
           </Marker>
       </MapContainer>
@@ -43,7 +47,15 @@ function App() {
         alignItems: "center"
       }}
     >
-      <h1>ISS Tracker</h1>
+      <h1>
+        <div className="spinner-grow text-primary mx-3" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+        ISS Tracker
+        <div className="spinner-grow text-primary mx-3" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </h1>
       <div>
         <h3>Latitude: <span id="latitude"></span>{Number(coords.latitude).toFixed(4)}&deg;</h3>
         <h3>Longitude: <span id="longitude"></span>{Number(coords.longitude).toFixed(4)}&deg;</h3>
